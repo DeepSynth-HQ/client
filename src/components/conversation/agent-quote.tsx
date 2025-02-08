@@ -14,7 +14,7 @@ export default function AgentQuote() {
   return (
     <TypingAnimation
       duration={50}
-      className="mx-auto my-2 w-full max-w-5xl text-center text-3xl font-bold">
+      className="mx-auto my-2 w-full max-w-5xl text-center text-3xl font-bold text-foreground">
       {`Hi ${getLastName(session?.user?.name ?? "")}, how can I help you!`}
     </TypingAnimation>
   );

@@ -91,7 +91,7 @@ export default function UserInput() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mx-auto flex w-full max-w-5xl flex-col items-start gap-2 rounded-xl border border-secondary bg-muted/5 p-2 hover:border-primary">
+      className="mx-auto flex w-full max-w-5xl flex-col items-start gap-2 rounded-xl border border-primary/30 bg-muted/5 p-2 hover:border-primary">
       <Textarea
         {...register("message")}
         rows={6}
@@ -125,33 +125,31 @@ export default function UserInput() {
                   variant={"secondary"}
                   className="group absolute right-0 top-0 size-4 -translate-y-1/2 translate-x-1/2 rounded-full"
                   onClick={() => clearImage(index)}>
-                  <XCircle className="size-4 group-hover:fill-black group-hover:text-white" />
+                  <XCircle className="size-4 group-hover:fill-primary group-hover:text-primary-foreground" />
                 </Button>
               </div>
             ))}
           </div>
         )}
-        <div className="flex size-9 items-center justify-center rounded-md text-secondary-foreground hover:bg-secondary">
-          <Label
-            htmlFor="upload-images"
-            className="flex cursor-pointer items-center gap-2">
-            <ImagePlus className="size-4" />
-            <Input
-              id="upload-images"
-              type="file"
-              accept="image/*"
-              multiple
-              className="hidden"
-              onChange={handleImageChange}
-            />
-          </Label>
-        </div>
+        <Label
+          htmlFor="upload-images"
+          className="flex cursor-pointer items-center gap-2">
+          <ImagePlus className="size-9 rounded-md p-2.5 text-secondary-foreground hover:bg-secondary" />
+          <Input
+            id="upload-images"
+            type="file"
+            accept="image/*"
+            multiple
+            className="hidden"
+            onChange={handleImageChange}
+          />
+        </Label>
         <Button
           type="submit"
           size="icon"
           variant="ghost"
           disabled={!isDirty || isSubmitting}>
-          <SendHorizontalIcon className="size-4" />
+          <SendHorizontalIcon className="size-4 text-secondary-foreground" />
         </Button>
       </div>
     </form>

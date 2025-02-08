@@ -13,15 +13,13 @@ export default function Intergrations() {
 
   return (
     <div className="mx-auto w-full max-w-5xl">
-      <h3 className="my-2 text-sm font-bold text-foreground/60">
-        Intergrations
-      </h3>
+      <h3 className="my-2 text-sm font-bold text-primary">Intergrations</h3>
       <div className="my-2 grid grid-cols-2 gap-4">
         {intergrations.map((suggestion, key: Key) => (
           <Link
             key={key}
             href={"#"}
-            className="relative cursor-pointer overflow-hidden rounded-md border p-6 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-xl hover:shadow-popover-foreground/20">
+            className="relative cursor-pointer overflow-hidden rounded-md border p-6 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/40">
             <p className="text-xl font-bold">{suggestion.title}</p>
             <p className="text-sm text-muted-foreground">
               {suggestion.description}
@@ -29,6 +27,8 @@ export default function Intergrations() {
             <BorderBeam
               size={100}
               duration={5}
+              colorTo="#249AC2"
+              colorFrom="#FAFAFA"
               delay={Number(key) + 0.5}
             />
           </Link>

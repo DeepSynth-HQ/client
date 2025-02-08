@@ -105,8 +105,10 @@ const features = [
 
 export function PlatformFeatures() {
   return (
-    <section className="h-svh">
-      <h2 className="mb-10 text-center text-4xl font-bold">Core features</h2>
+    <section className="bg-gradient-to-b from-background to-[hsl(var(--background-secondary))] to-20% py-40">
+      <h2 className="mb-10 bg-gradient-to-b from-foreground to-primary bg-clip-text text-center text-4xl font-bold text-transparent">
+        Core features
+      </h2>
       <BentoGrid className="mx-auto w-full max-w-7xl">
         {features.map((feature, idx) => (
           <BentoCard

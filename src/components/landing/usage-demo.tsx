@@ -23,12 +23,12 @@ const demoConversation: { role: "user" | "agent"; message: string }[] = [
   {
     role: "user",
     message:
-      "I want to DCA into SOL over the next 3 months, investing $1,000 each month. Can you help me set that up?",
+      "I want to DCA into SUI over the next 3 months, investing $1,000 each month. Can you help me set that up?",
   },
   {
     role: "agent",
     message:
-      "Absolutely. Setting up a dollar-cost averaging plan to invest $1,000 in SOL every month for the next 3 months.",
+      "Absolutely. Setting up a dollar-cost averaging plan to invest $1,000 in SUI every month for the next 3 months.",
   },
   {
     role: "user",
@@ -61,18 +61,20 @@ const demoConversation: { role: "user" | "agent"; message: string }[] = [
 
 export default function UsageDemo() {
   return (
-    <section className="relative flex h-svh flex-col items-center justify-center">
-      <h2 className="mb-10 text-center text-4xl font-bold">Demo</h2>
+    <section className="relative bg-gradient-to-b from-[hsl(var(--background-secondary))] to-background to-20% py-40">
+      <h2 className="mb-10 bg-gradient-to-b from-foreground to-primary bg-clip-text text-center text-4xl font-bold text-transparent">
+        Demo
+      </h2>
       <ShineBorder
-        className="mx-auto flex aspect-video w-full max-w-7xl flex-col gap-2 overflow-hidden rounded-lg bg-background p-0 shadow-xl shadow-popover-foreground/30 dark:bg-background"
+        className="mx-auto flex aspect-video w-full max-w-7xl flex-col gap-2 overflow-hidden rounded-lg bg-background p-0 shadow-lg shadow-secondary"
         color={[
-          "#FF0000",
-          "#FF7F00",
-          "#FFFF00",
-          "#00FF00",
-          "#0000FF",
-          "#4B0082",
-          "#8B00FF",
+          "#249AC2",
+          "#2186AB",
+          "#1E7699",
+          "#1C6382",
+          "#185572",
+          "#154760",
+          "#11384B",
         ]}>
         <div className="flex w-full items-center gap-8 border-b p-4">
           <TerminalIcon className="size-4" />
@@ -95,7 +97,8 @@ export default function UsageDemo() {
                   "max-w-[80%] rounded-md p-2",
                   item.role === "user" &&
                     "bg-secondary text-secondary-foreground",
-                  item.role === "agent" && "border border-secondary",
+                  item.role === "agent" &&
+                    "border border-secondary text-secondary-foreground",
                 )}
                 key={key}>
                 {item.message}
