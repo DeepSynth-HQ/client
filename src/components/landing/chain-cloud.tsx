@@ -382,7 +382,7 @@ const Icons = {
 
 export function ChainCloud() {
   return (
-    <section className="relative mx-auto flex size-full h-svh items-center justify-center overflow-hidden">
+    <section className="relative z-0 mx-auto flex size-full h-svh items-center justify-center overflow-hidden bg-gradient-to-b from-[hsl(var(--background-secondary))] to-background to-20%">
       <span className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 whitespace-pre-wrap bg-gradient-to-b from-foreground to-primary bg-clip-text text-center text-6xl font-semibold leading-none text-transparent">
         Supported Chain
       </span>
