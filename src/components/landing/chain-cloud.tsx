@@ -2,7 +2,6 @@
 
 import { IconCloud } from "@/components/ui/icon-cloud";
 import Particles from "@/components/ui/particles";
-import { useTheme } from "next-themes";
 
 const Icons = {
   aptos: () => (
@@ -368,7 +367,6 @@ const Icons = {
 };
 
 export function ChainCloud() {
-  const { theme } = useTheme();
   return (
     <section className="relative mx-auto flex size-full h-svh items-center justify-center overflow-hidden">
       <span className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 whitespace-pre-wrap bg-gradient-to-b from-background to-foreground bg-clip-text text-center text-6xl font-semibold leading-none text-transparent">
@@ -391,7 +389,7 @@ export function ChainCloud() {
         quantity={300}
         staticity={100}
         ease={80}
-        color={theme === "dark" ? "#ccfbf1" : "#032726"}
+        color="#032726"
         refresh
       />
     </section>

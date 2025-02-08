@@ -1,6 +1,4 @@
 import { Button } from "../ui/button";
-import ThemeButton from "./theme-button";
-// import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { BookOpenTextIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -10,12 +8,6 @@ export default function Header() {
       <h1 className="font-bold">DeepSynth Agent</h1>
       <div className="flex space-x-2">
         <nav className="flex space-x-2">
-          {/* <Button
-            variant={"link"}
-            className="text-white">
-            <GitHubLogoIcon className="size-4" />
-            Github
-          </Button> */}
           <Button
             variant={"link"}
             asChild>
@@ -28,7 +20,6 @@ export default function Header() {
             </Link>
           </Button>
         </nav>
-        <ThemeButton />
         <Link href={"/conversation"}>
           <Button>Launch App</Button>
         </Link>

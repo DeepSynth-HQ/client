@@ -3,11 +3,9 @@
 import { MagicCard } from "../ui/magic-card";
 import { actionSuggestions } from "@/constants/conversation";
 import { useConversation } from "@/hooks/use-conversation";
-import { useTheme } from "next-themes";
 import { Key } from "react";
 
 export default function Suggestions() {
-  const { theme } = useTheme();
   const { submitUserInput, conversation } = useConversation();
 
   if (conversation.length > 0) return;
@@ -20,7 +18,7 @@ export default function Suggestions() {
           <MagicCard
             key={key}
             className="hover:-translate-x-1 hover:-translate-y-1 hover:shadow-xl hover:shadow-popover-foreground/20"
-            gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}>
+            gradientColor="#D9D9D955">
             <div
               className="w-full cursor-pointer p-6"
               onClick={() => submitUserInput({ message: suggestion.title })}>

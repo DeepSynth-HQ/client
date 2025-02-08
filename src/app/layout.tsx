@@ -1,7 +1,5 @@
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { NODE_ENV } from "@/configs/env.config";
-import { ThemeProvider } from "@/providers/theme-provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -26,18 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning={NODE_ENV === "production"}>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} h-svh w-full antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem>
-          {children}
-          <Toaster />
-        </ThemeProvider>
+        {children}
+        <Toaster />
       </body>
     </html>
   );
