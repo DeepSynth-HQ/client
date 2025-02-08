@@ -43,6 +43,9 @@ jobs:
           tags: ${{ steps.login-ecr.outputs.registry }}/${{env.IMAGE}}:${{steps.vars.outputs.tag}}
           push: true
           file: Dockerfile
+          cache-from: type=local,src=.docker-cache
+          cache-to: type=local,dest=.docker-cache
+          
 
       - name: Checkout Infrastructure
         uses: actions/checkout@v4
