@@ -1,5 +1,6 @@
 import Logo from "../common/logo";
 import { Button } from "../ui/button";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { BookOpenTextIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -12,6 +13,17 @@ export default function Header() {
       </div>
       <div className="flex space-x-2">
         <nav className="flex space-x-2">
+          <Button
+            variant={"link"}
+            asChild>
+            <Link
+              href={"https://github.com/DeepSynth-HQ"}
+              target="_blank"
+              className="text-foreground">
+              <GitHubLogoIcon className="size-4" />
+              Github
+            </Link>
+          </Button>
           <Button
             variant={"link"}
             asChild>
