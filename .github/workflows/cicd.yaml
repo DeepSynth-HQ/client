@@ -45,12 +45,12 @@ jobs:
           file: Dockerfile
           cache-from: type=local,src=.docker-cache
           cache-to: type=local,dest=.docker-cache
-          
+
 
       - name: Checkout Infrastructure
         uses: actions/checkout@v4
         with:
-          repository: deepsynth/deepsynth-infra
+          repository: DeepSynth-HQ/deepsynth-client
           ref: main
           token: ${{ secrets.PAT_ACCESS_TOKEN }}
       - name: Update deployment
