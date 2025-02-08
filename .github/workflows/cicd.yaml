@@ -51,7 +51,7 @@ jobs:
       - name: Checkout Infrastructure
         uses: actions/checkout@v4
         with:
-          repository: DeepSynth-HQ/deepsynth-client
+          repository: DeepSynth-HQ/deepsynth-infra
           ref: main
           token: ${{ secrets.PAT_ACCESS_TOKEN }}
       - name: Update deployment
