@@ -20,7 +20,7 @@ let notifications = [
   {
     name: "Telegram",
     title: "Token Price Alert",
-    description: "BTC has reached your target price of $50,000.",
+    description: "SUI has reached your target price of $4.13.",
     time: "2m ago",
     icon: telegramIcon,
     color: "#0088CC",
@@ -28,7 +28,7 @@ let notifications = [
   {
     name: "Discord",
     title: "Agent Action Executed",
-    description: "Bought 0.5 ETH at $2,300 based on strategy recommendation.",
+    description: "Bought 0.5 CETUS at $0.12 based on strategy recommendation.",
     time: "5m ago",
     icon: discordIcon,
     color: "#5865F2",
@@ -44,7 +44,7 @@ let notifications = [
   {
     name: "Telegram",
     title: "Strategy Recommendation",
-    description: "ETH predicted to hit $2,500, consider setting a sell order.",
+    description: "DEEP predicted to hit $0.21, consider setting a sell order.",
     time: "15m ago",
     icon: telegramIcon,
     color: "#0088CC",
@@ -53,7 +53,7 @@ let notifications = [
     name: "Discord",
     title: "Portfolio Update",
     description:
-      "New token added: SOL | Estimated impact: +8% growth potential.",
+      "New token added: SUI | Estimated impact: +8% growth potential.",
     time: "20m ago",
     icon: discordIcon,
     color: "#5865F2",
@@ -62,7 +62,7 @@ let notifications = [
     name: "Gmail",
     title: "Market Insight",
     description:
-      "Bitcoin dominance increased by 1.5%, impacting altcoin movement.",
+      "SEND token in the SUI ecosystem increased by 1.5%, reflecting growing activity and adoption.",
     time: "30m ago",
     icon: gmailIcon,
     color: "#D14836",
@@ -113,7 +113,7 @@ export function NotifyAnimatedList({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "absolute flex h-full w-full flex-col overflow-hidden rounded-lg border-none bg-gradient-to-b from-background to-transparent p-4 transition-all duration-300 ease-out",
+        "absolute flex h-full w-full flex-col overflow-hidden rounded-lg border-none p-4 transition-all duration-300 ease-out",
         className,
       )}>
       <AnimatedList delay={1500}>

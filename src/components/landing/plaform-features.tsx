@@ -2,14 +2,21 @@ import { IntegrationsAnimatedBeam } from "../common/integrations-animated-beam";
 import { NotifyAnimatedList } from "../common/notify-animated-list";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { CalendarIcon } from "@radix-ui/react-icons";
-import { BellIcon, Share2Icon } from "lucide-react";
+import {
+  BellIcon,
+  BotIcon,
+  BoxesIcon,
+  Share2Icon,
+  UsersIcon,
+  WorkflowIcon,
+} from "lucide-react";
 
 const features = [
   {
     Icon: Share2Icon,
     name: "Integrations",
     description:
-      "An advanced AI agent designed to seamlessly interact with the SUI ecosystem, integrating with DeepBook, SuiLend, Atoma Network, Cetus, Bluefin, and more. It provides real-time notifications across Discord, Telegram, and Gmail, ensuring users stay updated on the latest events and transactions.",
+      "Supports integrations from SUI ecosystem & traditional communication platforms",
     className: "col-span-3",
     background: <IntegrationsAnimatedBeam />,
   },
@@ -18,14 +25,43 @@ const features = [
     name: "Notifications",
     description:
       "Delivers real-time notifications across Discord, Telegram, and Gmail, keeping users instantly informed. Whether it's market updates, transaction alerts, or system changes, stay connected and in control.",
-    className: "col-span-3 lg:col-span-2",
+    className: "col-span-2",
     background: <NotifyAnimatedList />,
+  },
+  {
+    Icon: BotIcon,
+    name: "AI-Drivent & Agent",
+    description:
+      "Leverages AI to analyze market trends and execute intelligent trading strategies with minimal manual input.",
+    className: "col-span-1",
   },
   {
     Icon: CalendarIcon,
     name: "Schedule Trading",
-    description: "Use the calendar to filter your files by date.",
-    className: "col-span-3 lg:col-span-1",
+    description:
+      "Plan and automate your trades in advance using a built-in calendar, ensuring timely execution without manual intervention.",
+    className: "col-span-1",
+  },
+  {
+    Icon: BoxesIcon,
+    name: "Onchain tracking",
+    description:
+      "Provides real-time monitoring of blockchain transactions, ensuring transparency and informed decision-making.",
+    className: "col-span-2",
+  },
+  {
+    Icon: WorkflowIcon,
+    name: "Automation Trading",
+    description:
+      "Enables rule-based and AI-driven automated trading, optimizing efficiency and reducing manual effort.",
+    className: "col-span-2",
+  },
+  {
+    Icon: UsersIcon,
+    name: "Human Approval for Agent Actions",
+    description:
+      "Ensures security by requiring human verification before executing critical AI-driven actions.",
+    className: "col-span-1",
   },
 ];
 
