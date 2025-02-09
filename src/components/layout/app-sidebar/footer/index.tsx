@@ -13,6 +13,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { SERVER_URL } from "@/configs/env.config";
 import { useClipboard } from "@/hooks/use-clipboard";
 import { useSession } from "@/hooks/use-session";
 import { useToast } from "@/hooks/use-toast";
@@ -23,6 +24,7 @@ import {
   LoaderCircleIcon,
   User2Icon,
 } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function SidebarFooterContent() {
@@ -79,16 +81,18 @@ export default function SidebarFooterContent() {
                 <span>Billing</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => push("api/logout")}>
+              <DropdownMenuItem onClick={() => push("logout")}>
                 <span className="font-bold text-red-500">Sign out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         )}
         {status === "unauthenticated" && (
-          <SidebarMenuButton onClick={() => push("api/login")}>
-            <User2Icon /> Login
-          </SidebarMenuButton>
+          <Link href={`${SERVER_URL}/auth/x`}>
+            <SidebarMenuButton>
+              <User2Icon /> Login
+            </SidebarMenuButton>
+          </Link>
         )}
         {status === "loading" && (
           <SidebarMenuButton disabled>
