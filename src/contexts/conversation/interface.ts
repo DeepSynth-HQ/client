@@ -18,3 +18,28 @@ export interface ConversationContextValue {
   }) => void;
   createConversation: () => void;
 }
+
+export type Referral = {
+  code: string;
+  total_used: number;
+};
+
+export type SessionUser = {
+  id: string;
+  username: string;
+  address?: string;
+  name: string;
+  avatar?: string;
+  referral?: Referral;
+};
+
+export interface Session {
+  token: string;
+  user: SessionUser;
+}
+
+export type SessionStatus = "authenticated" | "unauthenticated" | "loading";
+export interface SessionContextValue {
+  session: Session | null | undefined;
+  status: SessionStatus;
+}

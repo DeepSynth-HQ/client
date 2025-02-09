@@ -1,4 +1,4 @@
-import { ActionSuggestion, Intergration } from "@/interfaces/conversation";
+import { ActionSuggestion, Integration } from "@/interfaces/conversation";
 
 export const actionSuggestions: ActionSuggestion[] = [
   {
@@ -20,25 +20,34 @@ export const actionSuggestions: ActionSuggestion[] = [
   },
 ];
 
-export const intergrations: Intergration[] = [
+export const integrations: Integration[] = [
   {
-    title: "Platform 1",
-    description: "Description 1",
+    title: "Cetus Protocol",
+    description:
+      "Cetus is the leading DEX and liquidity protocol on Sui, which serves as the key liquidity and swap infra of the Sui ecosystem.",
+    path: "https://www.cetus.zone/",
   },
   {
-    title: "Platform 2",
-    description: "Description 2",
+    title: "Suilend | Sui's DeFi Suite",
+    description: "Sui's first lending protocol",
+    path: "https://suilend.fi/",
   },
   {
-    title: "Platform 3",
-    description: "Description 3",
+    title: "Automa Network",
+    description: "Decentralized AI private cloud",
+    path: "https://atoma.network/",
   },
   {
-    title: "Platform 4",
-    description: "Description 4",
+    title: "DeepBook on Sui | Sui's Fully On-chain Order Book",
+    description:
+      "Deepbook is a high-throughput and low latency DEX with a fully on-chain order book capable of delivering a trading experience similar to that of a CEX.",
+    path: "https://deepbook.tech/",
+    isComingSoon: true,
   },
   {
-    title: "Platform 5",
-    description: "Description 5",
+    title: "Bluefin | Decentralized Financial Ecosystem",
+    description:
+      "A Financial Network With Parallelized Performance. Building the most powerful decentralized financial ecosystem. Performant, accessible, and intuitive.",
+    path: "https://bluefin.io/",
   },
 ];

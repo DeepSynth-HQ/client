@@ -2,12 +2,12 @@
 
 import TypingAnimation from "../ui/typing-animation";
 import { useConversation } from "@/hooks/use-conversation";
+import { useSession } from "@/hooks/use-session";
 import { getLastName } from "@/utils";
-import { useSession } from "next-auth/react";
 
 export default function AgentQuote() {
   const { conversation } = useConversation();
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   if (conversation.length > 0 || !session) return;
 

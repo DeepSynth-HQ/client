@@ -14,6 +14,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { useClipboard } from "@/hooks/use-clipboard";
+import { useSession } from "@/hooks/use-session";
 import { useToast } from "@/hooks/use-toast";
 import { getInitials } from "@/utils";
 import {
@@ -22,12 +23,13 @@ import {
   LoaderCircleIcon,
   User2Icon,
 } from "lucide-react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function SidebarFooterContent() {
-  const { data: session, status } = useSession();
+  const { session, status } = useSession();
   const { toast } = useToast();
   const { copy } = useClipboard();
+  const { push } = useRouter();
 
   return (
     <SidebarMenu>
@@ -35,12 +37,14 @@ export default function SidebarFooterContent() {
         <SidebarMenuItem>
           <SidebarMenuButton
             onClick={() => {
-              if (!session.wallet?.public_key) return;
-              copy(session.wallet?.public_key);
+              if (!session?.user.address) return;
+              copy(session.user.address);
               toast({ description: "Wallet is copied to clipboard" });
             }}>
+            <p className="min-w-0 flex-grow truncate">
+              {session?.user.address}
+            </p>
             <CopyIcon />
-            <p className="truncate">{session.wallet?.public_key}</p>
           </SidebarMenuButton>
         </SidebarMenuItem>
       )}
@@ -49,15 +53,15 @@ export default function SidebarFooterContent() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <SidebarMenuButton className="flex h-max space-x-2 p-0">
-                <Avatar className="size-full min-w-4 max-w-8">
-                  <AvatarImage src={session?.user?.image ?? undefined} />
+                <Avatar className="aspect-square size-full max-h-8 min-h-4 min-w-4 max-w-8">
+                  <AvatarImage src={session?.user?.avatar ?? undefined} />
                   <AvatarFallback>
                     {getInitials(session?.user?.name as string)}
                   </AvatarFallback>
                 </Avatar>
-                <div className="flex flex-col">
-                  <p className="truncate font-bold">{session.user?.name}</p>
-                  <p>{session.user?.email}</p>
+                <div className="flex flex-grow flex-col">
+                  <p className="truncate font-bold">{session?.user.username}</p>
+                  <p>{session?.user.username}</p>
                 </div>
                 <ChevronsUpDownIcon className="ml-auto" />
               </SidebarMenuButton>
@@ -75,14 +79,14 @@ export default function SidebarFooterContent() {
                 <span>Billing</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => signOut()}>
+              <DropdownMenuItem onClick={() => push("api/auth/logout")}>
                 <span className="font-bold text-red-500">Sign out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         )}
         {status === "unauthenticated" && (
-          <SidebarMenuButton onClick={() => signIn()}>
+          <SidebarMenuButton onClick={() => push("api/auth/login")}>
             <User2Icon /> Login
           </SidebarMenuButton>
         )}

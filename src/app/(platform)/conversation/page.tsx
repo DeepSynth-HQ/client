@@ -1,7 +1,7 @@
 import AgentQuote from "@/components/conversation/agent-quote";
 import ConversationBox from "@/components/conversation/conversation-box";
 import ConversationMenu from "@/components/conversation/conversation-menu";
-import Intergrations from "@/components/conversation/intergrations";
+import Integrations from "@/components/conversation/integrations";
 import Suggestions from "@/components/conversation/suggestion";
 import UserInput from "@/components/conversation/user-input";
 
@@ -13,7 +13,7 @@ export default function Conversation() {
       <ConversationBox />
       <UserInput />
       <Suggestions />
-      <Intergrations />
+      <Integrations />
     </div>
   );
 }

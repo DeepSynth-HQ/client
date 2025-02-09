@@ -1,11 +1,11 @@
+import { useSession } from "./use-session";
 import { SERVER_URL } from "@/configs/env.config";
-import { useSession } from "next-auth/react";
 import { useCallback, useState } from "react";
 
 const useFileUpload = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   const uploadFiles = useCallback(
     async (files: File[]) => {
@@ -23,7 +23,7 @@ const useFileUpload = () => {
             body: formData,
             headers: {
               accept: "application/json",
-              Authorization: `Bearer ${session?.accessToken}`,
+              Authorization: `Bearer ${session?.token}`,
             },
           });
 
@@ -42,7 +42,7 @@ const useFileUpload = () => {
         setIsUploading(false);
       }
     },
-    [session?.accessToken],
+    [session?.token],
   );
   return { uploadFiles, isUploading, isError };
 };

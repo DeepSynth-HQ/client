@@ -1,5 +1,7 @@
-import { ConversationContextValue } from "./interface";
+import { ConversationContextValue, SessionContextValue } from "./interface";
 import { createContext } from "react";
 
 export const ConversationContext =
   createContext<ConversationContextValue | null>(null);
+
+export const SessionContext = createContext<SessionContextValue | null>(null);

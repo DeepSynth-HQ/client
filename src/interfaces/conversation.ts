@@ -18,9 +18,11 @@ export interface ActionSuggestion {
   description: string;
 }
 
-export interface Intergration {
+export interface Integration {
   title: string;
   description: string;
+  path: string;
+  isComingSoon?: boolean;
 }
 
 export interface ConversationPayload {

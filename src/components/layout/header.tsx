@@ -28,7 +28,7 @@ export default function Header() {
             variant={"link"}
             asChild>
             <Link
-              href={"#"}
+              href={"https://docs.deepsynth.org"}
               target="_blank"
               className="text-foreground">
               <BookOpenTextIcon className="size-4" />

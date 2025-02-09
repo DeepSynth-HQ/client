@@ -4,6 +4,7 @@ import { SERVER_URL } from "@/configs/env.config";
 import { ConversationContext } from "@/contexts/conversation";
 import useFileUpload from "@/hooks/use-file-upload";
 import useLocalStorage from "@/hooks/use-localstorage";
+import { useSession } from "@/hooks/use-session";
 import {
   AgentCallPayload,
   Conversation,
@@ -11,7 +12,6 @@ import {
   ConversationSession,
 } from "@/interfaces/conversation";
 import { generateSessionId, handleStreamEventData } from "@/utils";
-import { useSession } from "next-auth/react";
 import { ReactNode, useCallback, useEffect, useState } from "react";
 
 export const ConversationProvider = ({
@@ -31,13 +31,13 @@ export const ConversationProvider = ({
   const [conversationSessions, setConversationSessions] = useState<
     ConversationSession[][] | ConversationSession[]
   >([]);
-  const { data: session } = useSession();
+  const { session } = useSession();
   const { setLocalValue } = useLocalStorage();
   const { uploadFiles } = useFileUpload();
 
   const fetchConversation = useCallback(
     async ({ sessionId }: { sessionId: string }) => {
-      if (!session?.user?.email) return;
+      if (!session?.user?.username) return;
       setConversationSessionId(sessionId);
       const payload: ConversationPayload = {
         session_id: sessionId,
@@ -53,7 +53,7 @@ export const ConversationProvider = ({
           headers: {
             "Content-Type": "application/json",
             accept: "application/json",
-            Authorization: `Bearer ${session?.accessToken}`,
+            Authorization: `Bearer ${session?.token}`,
           },
           body: JSON.stringify(payload),
         });
@@ -89,7 +89,7 @@ export const ConversationProvider = ({
         headers: {
           "Content-Type": "application/json",
           accept: "application/json",
-          Authorization: `Bearer ${session?.accessToken}`,
+          Authorization: `Bearer ${session?.token}`,
         },
         body: JSON.stringify({}),
       });
@@ -113,7 +113,7 @@ export const ConversationProvider = ({
       if (
         !session ||
         !conversationSessionId ||
-        !session?.user?.email ||
+        !session?.user?.username ||
         (!message && !images)
       )
         return;
@@ -145,7 +145,7 @@ export const ConversationProvider = ({
           headers: {
             "Content-Type": "application/json",
             accept: "application/json",
-            Authorization: `Bearer ${session?.accessToken}`,
+            Authorization: `Bearer ${session?.token}`,
           },
           body: JSON.stringify(payload),
         });

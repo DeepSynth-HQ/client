@@ -9,16 +9,16 @@ import Link from "next/link";
 
 export default function Intro() {
   return (
-    <section className="relative mx-auto flex h-svh items-center justify-center overflow-hidden">
+    <section className="relative mx-auto flex h-svh items-center justify-center overflow-hidden bg-gradient-to-b from-[hsl(var(--background-secondary))] to-background">
       <Meteors number={30} />
       <div className="flex w-full max-w-7xl flex-col gap-10">
         <div className="flex items-center justify-center">
           <div
             className={cn(
-              "group rounded-full border border-secondary/5 bg-secondary text-base transition-all ease-in",
+              "group flex items-center space-x-2 rounded-full border border-secondary/5 bg-secondary px-4 py-1 text-base transition-all ease-in",
             )}>
-            <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 text-secondary-foreground transition ease-out">
-              <Logo className="mr-2 size-4" />
+            <Logo className="size-4" />
+            <AnimatedShinyText className="inline-flex items-center justify-center text-secondary-foreground transition ease-out">
               Introducing DeepSynth Agent
             </AnimatedShinyText>
           </div>
@@ -42,7 +42,7 @@ export default function Intro() {
             <RainbowButton>Get Started</RainbowButton>
           </Link>
           <Link
-            href={"#"}
+            href={"https://docs.deepsynth.org"}
             target={"_blank"}>
             <Button variant={"secondary"}>Read Documentation</Button>
           </Link>

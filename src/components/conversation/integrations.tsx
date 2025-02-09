@@ -1,28 +1,29 @@
 "use client";
 
 import { BorderBeam } from "../ui/border-beam";
-import { intergrations } from "@/constants/conversation";
+import { integrations } from "@/constants/conversation";
 import { useConversation } from "@/hooks/use-conversation";
 import Link from "next/link";
 import { Key } from "react";
 
-export default function Intergrations() {
+export default function Integrations() {
   const { conversation } = useConversation();
 
   if (conversation.length > 0) return;
 
   return (
     <div className="mx-auto w-full max-w-5xl">
-      <h3 className="my-2 text-sm font-bold text-primary">Intergrations</h3>
+      <h3 className="my-2 text-sm font-bold text-primary">Integrations</h3>
       <div className="my-2 grid grid-cols-2 gap-4">
-        {intergrations.map((suggestion, key: Key) => (
+        {integrations.map((integration, key: Key) => (
           <Link
             key={key}
-            href={"#"}
+            href={integration.path}
+            target="_blank"
             className="relative cursor-pointer overflow-hidden rounded-md border p-6 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/40">
-            <p className="text-xl font-bold">{suggestion.title}</p>
-            <p className="text-sm text-muted-foreground">
-              {suggestion.description}
+            <p className="truncate text-xl font-bold">{integration.title}</p>
+            <p className="line-clamp-2 text-sm text-muted-foreground">
+              {integration.description}
             </p>
             <BorderBeam
               size={100}
