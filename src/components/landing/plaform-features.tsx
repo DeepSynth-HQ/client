@@ -1,5 +1,6 @@
 import { IntegrationsAnimatedBeam } from "../common/integrations-animated-beam";
 import { NotifyAnimatedList } from "../common/notify-animated-list";
+import onchainTracingImage from "@/assets/images/onchain-tracking.webp";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import {
@@ -10,16 +11,9 @@ import {
   UsersIcon,
   WorkflowIcon,
 } from "lucide-react";
+import Image from "next/image";
 
 const features = [
-  {
-    Icon: Share2Icon,
-    name: "Integrations",
-    description:
-      "Supports integrations from SUI ecosystem & traditional communication platforms",
-    className: "col-span-3",
-    background: <IntegrationsAnimatedBeam />,
-  },
   {
     Icon: BellIcon,
     name: "Notifications",
@@ -48,6 +42,14 @@ const features = [
     description:
       "Provides real-time monitoring of blockchain transactions, ensuring transparency and informed decision-making.",
     className: "col-span-2",
+    background: (
+      <Image
+        src={onchainTracingImage.src}
+        alt=""
+        fill
+        objectFit="cover"
+      />
+    ),
   },
   {
     Icon: WorkflowIcon,
@@ -71,6 +73,13 @@ export function PlatformFeatures() {
       <h2 className="mb-10 bg-gradient-to-b from-foreground to-primary bg-clip-text text-center text-4xl font-bold text-transparent">
         Core features
       </h2>
+      <BentoCard
+        Icon={Share2Icon}
+        name="Integrations"
+        description="Supports integrations from SUI ecosystem & traditional communication platforms"
+        className="mx-auto mb-4 h-[500px] w-full max-w-7xl"
+        background={<IntegrationsAnimatedBeam />}
+      />
       <BentoGrid className="mx-auto w-full max-w-7xl">
         {features.map((feature, idx) => (
           <BentoCard

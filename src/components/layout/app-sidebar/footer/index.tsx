@@ -79,14 +79,14 @@ export default function SidebarFooterContent() {
                 <span>Billing</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => push("api/auth/logout")}>
+              <DropdownMenuItem onClick={() => push("api/logout")}>
                 <span className="font-bold text-red-500">Sign out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         )}
         {status === "unauthenticated" && (
-          <SidebarMenuButton onClick={() => push("api/auth/login")}>
+          <SidebarMenuButton onClick={() => push("api/login")}>
             <User2Icon /> Login
           </SidebarMenuButton>
         )}
