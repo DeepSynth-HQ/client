@@ -94,7 +94,7 @@ export default function UserInput() {
       className="mx-auto flex w-full max-w-5xl flex-col items-start gap-2 rounded-xl border border-primary/30 bg-muted/5 p-2 hover:border-primary">
       <Textarea
         {...register("message")}
-        rows={6}
+        rows={4}
         placeholder={
           conversation.length === 0
             ? "Start a new conversation"

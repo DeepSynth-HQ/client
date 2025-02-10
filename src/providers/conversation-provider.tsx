@@ -181,12 +181,12 @@ export const ConversationProvider = ({
           setAnsweringText(result);
         }
 
-        setIsAnswering(false);
-        setAnsweringText(null);
         setConversation((prev) => [
           ...prev,
           { role: "assistant", content: result },
         ]);
+        setIsAnswering(false);
+        setAnsweringText(null);
 
         if (conversation.length === 0) {
           await fetchConversationSessions();

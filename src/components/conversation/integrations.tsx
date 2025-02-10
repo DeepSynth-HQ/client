@@ -19,7 +19,7 @@ export default function Integrations() {
         {integrations.map((integration, key: Key) => (
           <Link
             key={key}
-            href={integration.path}
+            href={integration?.path ?? "#"}
             target="_blank"
             className="relative flex cursor-pointer items-center overflow-hidden rounded-md border p-6 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/40">
             <div className="absolute flex aspect-square size-12 items-center justify-center rounded-full bg-white p-1">
