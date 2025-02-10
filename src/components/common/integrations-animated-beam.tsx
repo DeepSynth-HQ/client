@@ -144,7 +144,7 @@ export function IntegrationsAnimatedBeam({
   return (
     <div
       className={cn(
-        "absolute flex h-full w-full items-center justify-end overflow-hidden rounded-lg p-10 transition-all duration-300 ease-out",
+        "absolute flex h-full w-full items-center justify-end overflow-hidden rounded-lg p-4 transition-all duration-300 ease-out md:p-20",
         className,
       )}
       ref={containerRef}>

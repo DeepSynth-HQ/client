@@ -20,8 +20,8 @@ export interface ActionSuggestion {
 
 export interface Integration {
   title: string;
-  description: string;
-  path: string;
+  description?: string;
+  path?: string;
   image: string;
   isComingSoon?: boolean;
 }

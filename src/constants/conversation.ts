@@ -60,3 +60,34 @@ export const integrations: Integration[] = [
     image: BluefinIcon,
   },
 ];
+
+export const landingIntegrations: Integration[] = [
+  {
+    title: "Cetus Protocol",
+    image: CetusIcon,
+    description:
+      "Cetus is the leading DEX and liquidity protocol on Sui, which serves as the key liquidity and swap infra of the Sui ecosystem.",
+  },
+  {
+    title: "Suilend",
+    image: SuilendIcon,
+    description: "Sui's first lending protocol",
+  },
+  {
+    title: "Atoma Network",
+    image: AtomaNetworkIcon,
+    description: "Decentralized AI private cloud",
+  },
+  {
+    title: "DeepBook on Sui",
+    image: DeepbookIcon,
+    description:
+      "Deepbook is a high-throughput and low latency DEX with a fully on-chain order book capable of delivering a trading experience similar to that of a CEX.",
+  },
+  {
+    title: "Bluefin",
+    image: BluefinIcon,
+    description:
+      "A Financial Network With Parallelized Performance. Building the most powerful decentralized financial ecosystem. Performant, accessible, and intuitive.",
+  },
+];
