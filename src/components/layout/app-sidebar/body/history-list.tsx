@@ -39,7 +39,7 @@ export default function HistoryList() {
   const isNestedArray = Array.isArray(conversationSessions?.[0]);
 
   return (
-    <SidebarMenu className="pr-2">
+    <SidebarMenu>
       {isNestedArray
         ? (conversationSessions as ConversationSession[][]).map(
             (childArray) => (

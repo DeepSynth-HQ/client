@@ -59,6 +59,28 @@ body {
   }
 }
 
+/* Scrollbar Styles */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: hsl(195, 69%, 45%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(197, 67%, 36%);
+  border-radius: 5px;
+}
+
 /* Color palette */
 /* 
   --blue-50: 195 69% 45%;

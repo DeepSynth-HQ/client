@@ -36,7 +36,7 @@ export default async function AppSidebar() {
         {/* Conversations */}
         <SidebarGroup className="overflow-y-hidden">
           <SidebarGroupLabel>Conversation History</SidebarGroupLabel>
-          <SidebarGroupContent className="h-full hover:overflow-y-auto">
+          <SidebarGroupContent className="h-full overflow-y-auto">
             <HistoryList />
           </SidebarGroupContent>
         </SidebarGroup>
