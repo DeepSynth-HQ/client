@@ -8,9 +8,9 @@ import Link from "next/link";
 import { Key } from "react";
 
 export default function Integrations() {
-  const { conversation } = useConversation();
+  const { conversation, conversationId } = useConversation();
 
-  if (conversation.length > 0) return;
+  if (conversation.length > 0 || conversationId) return;
 
   return (
     <div className="mx-auto w-full max-w-5xl">

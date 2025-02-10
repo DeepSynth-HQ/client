@@ -6,11 +6,12 @@ import { useSession } from "@/hooks/use-session";
 import { getLastName } from "@/utils";
 
 export default function AgentQuote() {
-  const { conversation } = useConversation();
   const { session } = useSession();
 
-  if (conversation.length > 0 || !session) return;
+  const { conversation, conversationId } = useConversation();
 
+  if (conversation.length > 0 || !session?.user?.name || conversationId)
+    return null;
   return (
     <TypingAnimation
       duration={50}

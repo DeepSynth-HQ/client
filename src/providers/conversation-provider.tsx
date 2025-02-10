@@ -3,7 +3,6 @@
 import { SERVER_URL } from "@/configs/env.config";
 import { ConversationContext } from "@/contexts/conversation";
 import useFileUpload from "@/hooks/use-file-upload";
-import useLocalStorage from "@/hooks/use-localstorage";
 import { useSession } from "@/hooks/use-session";
 import {
   AgentCallPayload,
@@ -12,6 +11,7 @@ import {
   ConversationSession,
 } from "@/interfaces/conversation";
 import { generateSessionId, handleStreamEventData } from "@/utils";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ReactNode, useCallback, useEffect, useState } from "react";
 
 export const ConversationProvider = ({
@@ -32,8 +32,24 @@ export const ConversationProvider = ({
     ConversationSession[][] | ConversationSession[]
   >([]);
   const { session } = useSession();
-  const { setLocalValue } = useLocalStorage();
   const { uploadFiles } = useFileUpload();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const conversationId = searchParams.get("conversation");
+
+  const updateQuery = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
+      router.push(pathname + "?" + params.toString());
+    },
+    [searchParams, pathname, router],
+  );
+
+  const resetQuery = useCallback(() => {
+    router.push(pathname);
+  }, [pathname, router]);
 
   const fetchConversation = useCallback(
     async ({ sessionId }: { sessionId: string }) => {
@@ -60,20 +76,25 @@ export const ConversationProvider = ({
           body: JSON.stringify(payload),
         });
 
-        if (!response.ok) {
-          throw new Error(`Failed to fetch. Status: ${response.status}`);
+        const conversation: Conversation[] = await response.json();
+        if (!conversation || conversation.length === 0) {
+          throw new Error("No conversation data found");
         }
 
-        const conversation: Conversation[] = await response.json();
         setConversation(conversation);
+        updateQuery("conversation", sessionId);
       } catch (error) {
         console.error("Error:", error);
+        router.push(pathname);
       } finally {
         setIsFetchingConversation(false);
       }
     },
     [
       session,
+      router,
+      pathname,
+      updateQuery,
       setConversationSessionId,
       setConversation,
       setIsFetchingConversation,
@@ -188,6 +209,7 @@ export const ConversationProvider = ({
 
         if (conversation.length === 0) {
           await fetchConversationSessions();
+          updateQuery("conversation", conversationSessionId);
         }
       } catch (error) {
         console.error("Error:", error);
@@ -201,10 +223,11 @@ export const ConversationProvider = ({
     },
     [
       conversationSessionId,
-      uploadFiles,
-      fetchConversationSessions,
       session,
       conversation,
+      updateQuery,
+      uploadFiles,
+      fetchConversationSessions,
       setConversation,
       setIsThinking,
       setIsAnswering,
@@ -213,21 +236,23 @@ export const ConversationProvider = ({
   );
 
   const createConversation = useCallback(() => {
+    resetQuery();
     setConversation([]);
     const newConversationSessionId = generateSessionId();
-    setLocalValue("conversation_session_id", newConversationSessionId);
     setConversationSessionId(newConversationSessionId);
-  }, [setLocalValue]);
+  }, [resetQuery]);
 
   useEffect(() => {
     fetchConversationSessions();
   }, [fetchConversationSessions]);
 
   useEffect(() => {
-    const newLocalSessionId = generateSessionId();
-    setLocalValue("conversation_session_id", newLocalSessionId);
-    setConversationSessionId(newLocalSessionId);
-  }, [setLocalValue]);
+    if (!conversationId) {
+      createConversation();
+    } else {
+      fetchConversation({ sessionId: conversationId });
+    }
+  }, [createConversation, conversationId, fetchConversation]);
 
   return (
     <ConversationContext.Provider
@@ -239,6 +264,7 @@ export const ConversationProvider = ({
         isAnswering,
         answeringText,
         conversationSessions,
+        conversationId,
         submitUserInput,
         fetchConversation,
         createConversation,
