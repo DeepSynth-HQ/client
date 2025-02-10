@@ -1,5 +1,6 @@
 "use server";
 
+import { ORIGIN_URL } from "@/configs/env.config";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -15,5 +16,5 @@ export async function GET(request: NextRequest) {
       secure: true,
     });
   }
-  return NextResponse.redirect(requestUrl.origin);
+  return NextResponse.redirect(`${ORIGIN_URL}/conversation`);
 }
