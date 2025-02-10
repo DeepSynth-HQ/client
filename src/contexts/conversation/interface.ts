@@ -24,12 +24,16 @@ export type Referral = {
   total_used: number;
 };
 
+export type Wallet = {
+  public_key: string;
+};
+
 export type SessionUser = {
   id: string;
   username: string;
-  address?: string;
   name: string;
   avatar?: string;
+  wallet: Wallet;
   referral?: Referral;
 };
 

@@ -39,12 +39,12 @@ export default function SidebarFooterContent() {
         <SidebarMenuItem>
           <SidebarMenuButton
             onClick={() => {
-              if (!session?.user.address) return;
-              copy(session.user.address);
+              if (!session?.user.wallet.public_key) return;
+              copy(session.user.wallet.public_key);
               toast({ description: "Wallet is copied to clipboard" });
             }}>
             <p className="min-w-0 flex-grow truncate">
-              {session?.user.address}
+              {session?.user.wallet.public_key}
             </p>
             <CopyIcon />
           </SidebarMenuButton>
