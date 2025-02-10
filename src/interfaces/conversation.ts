@@ -22,6 +22,7 @@ export interface Integration {
   title: string;
   description: string;
   path: string;
+  image: string;
   isComingSoon?: boolean;
 }
 

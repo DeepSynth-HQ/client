@@ -13,7 +13,7 @@ export default function Suggestions() {
   return (
     <div className="mx-auto w-full max-w-5xl">
       <h3 className="my-2 text-sm font-bold text-primary">Suggestion</h3>
-      <div className="my-2 grid grid-cols-2 gap-4">
+      <div className="my-2 grid grid-cols-1 gap-4 md:grid-cols-2">
         {actionSuggestions.map((suggestion, key: Key) => (
           <MagicCard
             key={key}
