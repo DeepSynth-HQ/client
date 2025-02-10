@@ -43,6 +43,8 @@ export const ConversationProvider = ({
         session_id: sessionId,
       };
 
+      console.log(sessionId);
+      console.log(session.token);
       try {
         setIsFetchingConversation(true);
         const serverUrl = `${SERVER_URL}/agent/history`;

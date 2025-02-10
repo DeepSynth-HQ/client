@@ -6,7 +6,12 @@ import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 import { UserInputValue } from "./interfaces";
 import { useConversation } from "@/hooks/use-conversation";
-import { ImagePlus, SendHorizontalIcon, XCircle } from "lucide-react";
+import {
+  ImagePlus,
+  SendHorizontalIcon,
+  StopCircleIcon,
+  XCircle,
+} from "lucide-react";
 import Image from "next/image";
 import { useCallback, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -21,7 +26,8 @@ export default function UserInput() {
     formState: { isDirty, isSubmitting },
   } = useForm<UserInputValue>();
 
-  const { submitUserInput, conversation } = useConversation();
+  const { submitUserInput, conversation, isThinking, isAnswering } =
+    useConversation();
 
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
 
@@ -147,9 +153,13 @@ export default function UserInput() {
         <Button
           type="submit"
           size="icon"
-          variant="ghost"
+          variant={isThinking || isAnswering ? "default" : "ghost"}
           disabled={!isDirty || isSubmitting}>
-          <SendHorizontalIcon className="size-4 text-secondary-foreground" />
+          {isThinking || isAnswering ? (
+            <StopCircleIcon className="size-4 text-secondary-foreground" />
+          ) : (
+            <SendHorizontalIcon className="size-4 text-secondary-foreground" />
+          )}
         </Button>
       </div>
     </form>
