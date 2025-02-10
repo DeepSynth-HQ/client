@@ -43,9 +43,6 @@ export const ConversationProvider = ({
         session_id: sessionId,
       };
 
-      console.log("payload: ", payload);
-      console.log("bearer token: ", session?.token);
-
       try {
         setIsFetchingConversation(true);
         const serverUrl = `${SERVER_URL}/agent/history`;
@@ -66,7 +63,6 @@ export const ConversationProvider = ({
         }
 
         const conversation: Conversation[] = await response.json();
-        console.log(conversation);
         setConversation(conversation);
       } catch (error) {
         console.error("Error:", error);
