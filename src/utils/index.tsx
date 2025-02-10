@@ -56,13 +56,15 @@ export function handleStreamEventData(chunk: string) {
 
     if (line.startsWith("event: ")) {
       if (line.replace("event: ", "") === "end") {
-        break; // Break the loop when 'event: end' is encountered
+        break;
       }
       continue;
     }
 
     if (line.startsWith("data:")) {
-      transformedArray.push(line.replace(/^data: /, "").trimEnd());
+      transformedArray.push(
+        JSON.parse(line.replace(/^data: /, "").trimEnd()).v,
+      );
       continue;
     }
 
