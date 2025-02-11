@@ -107,10 +107,36 @@ export default function MarkdownFormat(props: Options) {
             />
           );
         },
+        table(props) {
+          return (
+            <div className="w-full max-w-full overflow-x-auto">
+              <table
+                className="w-max border border-secondary"
+                {...props}
+              />
+            </div>
+          );
+        },
+        th(props) {
+          return (
+            <th
+              className="max-w-[200px] whitespace-nowrap border border-secondary bg-primary px-2 font-bold text-primary-foreground"
+              {...props}
+            />
+          );
+        },
+        td(props) {
+          return (
+            <td
+              className="max-w-[200px] whitespace-nowrap border border-secondary px-2 text-secondary-foreground"
+              {...props}
+            />
+          );
+        },
       }}
       remarkPlugins={[remarkGfm, remarkHtml]}
       rehypePlugins={[rehypeRaw]}
-      className={"flex-grow overflow-x-auto whitespace-normal"}
+      className={"flex-grow overflow-auto whitespace-normal"}
       {...props}
     />
   );

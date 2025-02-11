@@ -63,6 +63,7 @@ body {
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 
 /* Track */
@@ -78,7 +79,6 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(197, 67%, 36%);
-  border-radius: 5px;
 }
 
 /* Color palette */

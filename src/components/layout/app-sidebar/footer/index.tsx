@@ -62,8 +62,8 @@ export default function SidebarFooterContent() {
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex flex-grow flex-col">
-                  <p className="truncate font-bold">{session?.user.username}</p>
-                  <p>{session?.user.username}</p>
+                  <p className="truncate font-bold">{session?.user.name}</p>
+                  <p className="truncate">{session?.user.username}</p>
                 </div>
                 <ChevronsUpDownIcon className="ml-auto" />
               </SidebarMenuButton>

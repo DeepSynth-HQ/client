@@ -25,7 +25,7 @@ export default function ConversationBox() {
       initial={{ flexGrow: 0, height: "0px", opacity: 0 }}
       animate={{ flexGrow: 1, height: "auto", opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="mx-auto my-4 w-full max-w-5xl flex-grow space-y-4 overflow-y-auto rounded-md">
+      className="mx-auto my-4 w-full max-w-5xl flex-grow space-y-4 overflow-y-auto overflow-x-hidden rounded-md">
       {conversation.map((msg, index) => (
         <div
           key={index}
@@ -47,7 +47,7 @@ export default function ConversationBox() {
           {/* Conversation Content */}
           <div
             className={cn(
-              "flex flex-grow flex-col space-y-2",
+              "flex w-full max-w-full flex-grow flex-col space-y-2",
               msg.role === "user" && "items-end",
             )}>
             {/* Input Image */}
@@ -71,8 +71,8 @@ export default function ConversationBox() {
               className={cn(
                 "flex w-full",
                 msg.role === "user" &&
-                  "w-fit justify-end rounded-lg bg-primary px-4 py-2 text-primary-foreground",
-                msg.role === "assistant" && "w-full max-w-[90%]",
+                  "w-fit max-w-full justify-end rounded-lg bg-primary px-4 py-2 text-primary-foreground",
+                msg.role === "assistant" && "max-w-[90%]",
               )}>
               {msg.role === "assistant" && (
                 <MarkdownFormat>{msg.content}</MarkdownFormat>

@@ -150,17 +150,21 @@ export default function UserInput() {
             onChange={handleImageChange}
           />
         </Label>
-        <Button
-          type="submit"
-          size="icon"
-          variant={isThinking || isAnswering ? "default" : "ghost"}
-          disabled={!isDirty || isSubmitting}>
-          {isThinking || isAnswering ? (
+        {isThinking || isAnswering ? (
+          <Button
+            type="button"
+            size="icon">
             <StopCircleIcon className="size-4 text-secondary-foreground" />
-          ) : (
+          </Button>
+        ) : (
+          <Button
+            type="submit"
+            size="icon"
+            variant="ghost"
+            disabled={!isDirty}>
             <SendHorizontalIcon className="size-4 text-secondary-foreground" />
-          )}
-        </Button>
+          </Button>
+        )}
       </div>
     </form>
   );
